@@ -1,0 +1,28 @@
+replicaCount: 1
+
+image:
+  repository: andyburgin/python-app
+  pullPolicy: IfNotPresent
+  tag: v1
+
+service:
+  type: ClusterIP
+  port: 5000
+
+ingress:
+  enabled: true
+  className: "nginx"
+  hosts:
+    - host: "python-app.test.com"
+      paths:
+        - path: /
+          pathType: Prefix
+
+serviceAccount:
+  create: false
+
+httpRoute:
+  enabled: false
+
+autoscaling:
+  enabled: false

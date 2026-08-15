@@ -11,12 +11,6 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - 
-        name: Run script
-        run: |
-          github_sha_hash=${{ github.sha }}
-          github_sha_short="${github_sha_hash:0:7}"
-          echo "GitHub Short Commit Hash hash: ${github_sha_short}"
       -
         name: Login to Docker Hub
         uses: docker/login-action@v4
@@ -24,12 +18,14 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Get short Git commit SHA
+        name: Set short git commit SHA
         id: vars
-        run: echo "COMMIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+        run: |
+          calculatedSha=$(git rev-parse --short ${{ github.sha }})
+          echo "::set-output name=short_sha::$calculatedSha"
       -
         name: Build and push
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: andyburgin/python-app:${{ env.COMMIT_SHA }}
+          tags: andyburgin/python-app:${{ steps.vars.outputs.short_sha }}

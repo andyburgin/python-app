@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - 
-        name: Run your script
+        name: Run script
         run: |
           github_sha_hash=${{ github.sha }}
           github_sha_short="${github_sha_hash:0:7}"

@@ -11,6 +11,12 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - 
+        name: Run your script
+        run: |
+          github_sha_hash=${{ github.sha }}
+          github_sha_short="${github_sha_hash:0:7}"
+          echo "GitHub Short Commit Hash hash: ${github_sha_short}"
       -
         name: Login to Docker Hub
         uses: docker/login-action@v4
@@ -22,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: andyburgin/python-app:${GITHUB_SHA::6}
+          tags: andyburgin/python-app:${github_sha_short}

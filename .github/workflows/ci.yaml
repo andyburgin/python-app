@@ -24,8 +24,12 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+        name: Get short Git commit SHA
+        id: vars
+        run: echo "COMMIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+      -
         name: Build and push
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: andyburgin/python-app:${github_sha_short}
+          tags: andyburgin/python-app:${{ env.COMMIT_SHA }}

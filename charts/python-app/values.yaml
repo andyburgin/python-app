@@ -1,14 +1,11 @@
 replicaCount: 1
-
 image:
   repository: andyburgin/python-app
   pullPolicy: IfNotPresent
-  tag: v1
-
+  tag: 4ca30d
 service:
   type: ClusterIP
   port: 5000
-
 ingress:
   enabled: true
   className: "nginx"
@@ -17,12 +14,9 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
-
 serviceAccount:
   create: false
-
 httpRoute:
   enabled: false
-
 autoscaling:
   enabled: false

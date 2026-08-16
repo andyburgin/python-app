@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: andyburgin/python-app
   pullPolicy: IfNotPresent
-  tag: 4ca30d
+  tag: "891060"
 service:
   type: ClusterIP
   port: 5000

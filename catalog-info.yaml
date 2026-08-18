@@ -4,7 +4,7 @@ metadata:
   name: python-app
   description: Provides info api
   annotations:
-     github.com/project-slug: andyburgin/python-app
+    github.com/project-slug: andyburgin/python-app
 spec:
   type: service
   owner: development

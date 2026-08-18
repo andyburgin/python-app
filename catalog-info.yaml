@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: python-app
-  description: Provides info api
+  description: "Provides info api"
   annotations:
     github.com/project-slug: andyburgin/python-app
 spec:

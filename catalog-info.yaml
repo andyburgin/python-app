@@ -5,6 +5,7 @@ metadata:
   description: "Provides info api"
   annotations:
     github.com/project-slug: andyburgin/python-app
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: service
   owner: development
